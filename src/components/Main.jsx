@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from "react";
 export default function Main() {
-  const [data, setData] = useState({ language: '', date: '' });
-  const [isMobile, setIsMobile] = useState('');
-  const [geros, setGeros] = useState('');
+  const [data, setData] = useState({ language: "", date: "" });
+  const [isMobile, setIsMobile] = useState("");
+  const [geros, setGeros] = useState("");
   const [langtitu, setLangtitu] = useState({
     lat: 41.31844990760012,
     lng: 69.29607491071154,
@@ -16,42 +16,42 @@ export default function Main() {
   //   window?.webkit?.messageHandlers?.buttonPressed.postMessage('getLang');
   // }, []);
   useEffect(() => {
-    window.addEventListener('message', handleReceivedData);
+    window.addEventListener("message", handleReceivedData);
     return () => {
-      window.removeEventListener('message', handleReceivedData);
+      window.removeEventListener("message", handleReceivedData);
     };
   }, []);
   useEffect(() => {
     // Function to send orientation data back to Swift
-    console.log(window.matchMedia('(orientation: landscape)').matches);
-    console.log(window.orientation, 'orientation');
+    console.log(window.matchMedia("(orientation: landscape)").matches);
+    console.log(window.orientation, "orientation");
     const sendOrientationData = (data) => {
-      console.log(data, 'orientation');
-      var orientation = '';
-      if (window.matchMedia('(orientation: landscape)').matches) {
+      console.log(data, "orientation");
+      var orientation = "";
+      if (window.matchMedia("(orientation: landscape)").matches) {
         if (window.orientation === 90) {
-          orientation = 'landscapeLeft';
+          orientation = "landscapeLeft";
           setGeros(orientation);
         } else {
-          orientation = 'landscapeRight';
+          orientation = "landscapeRight";
           setGeros(orientation);
         }
       } else {
-        orientation = 'portrait';
+        orientation = "portrait";
         setGeros(orientation);
       }
-      console.log(orientation, 'orientation');
+      console.log(orientation, "orientation");
 
       // window?.webkit?.messageHandlers.orientation.postMessage(orientation);
     };
 
     // Listen for orientation change events and call the function
-    window.addEventListener('orientationchange', sendOrientationData);
+    window.addEventListener("orientationchange", sendOrientationData);
     // sendOrientationData(); // Send initial orientation data on page load
 
     // Clean up the event listener when the component unmounts
     return () => {
-      window.removeEventListener('orientationchange', sendOrientationData);
+      window.removeEventListener("orientationchange", sendOrientationData);
     };
   }, []);
   // useEffect(() => {
@@ -61,8 +61,8 @@ export default function Main() {
   const handleReceivedData = (event) => {
     const receivedData = event.data;
     // Handle the received data
-    console.log('Hello:', receivedData);
-    console.log('Hello2:', event);
+    console.log("Hello:", receivedData);
+    console.log("Hello2:", event);
     // console.log('Hello2:', receivedData?.languageCode.slice(0, 2));
 
     // if (receivedData) setData(receivedData);
@@ -94,51 +94,51 @@ export default function Main() {
   };
 
   const handleClick = () => {
-    window?.webkit?.messageHandlers?.buttonPressed.postMessage('getTime');
+    window?.webkit?.messageHandlers?.buttonPressed.postMessage("getTime");
   };
   const handleClick2 = () => {
-    window?.webkit?.messageHandlers?.buttonPressed.postMessage('close');
+    window?.webkit?.messageHandlers?.buttonPressed.postMessage("close");
   };
   const handleClick3 = () => {
     window?.webkit?.messageHandlers?.buttonPressed.postMessage(
-      'locationButtonClicked'
+      "locationButtonClicked"
     );
   };
 
   const sendDataToAndroid = () => {
-    window?.JSBridge?.showMessageInNative('getTime');
+    window?.JSBridge?.showMessageInNative("getTime");
   };
   const sendDataToAndroidClose = () => {
-    window?.JSBridge?.showMessageInNative('close');
+    window?.JSBridge?.showMessageInNative("close");
   };
   const deepLink = () => {
     window?.webkit?.messageHandlers?.buttonPressed.postMessage(
-      'deepLinkButton'
+      "deepLinkButton"
     );
   };
   const getLang = () => {
-    window?.webkit?.messageHandlers?.buttonPressed.postMessage('getLang');
+    window?.webkit?.messageHandlers?.buttonPressed.postMessage("getLang");
   };
   return (
-    <div className='w-screen'>
+    <div className="w-screen">
       {/* <CarouselCustom /> */}
       {/* <div className='h-56 sm:h-64 xl:h-80 2xl:h-96 p-5 '></div> */}
-      <div className='flex min-h-full  flex-1 flex-col justify-center px-6 py-12 lg:px-8'>
+      <div className="flex min-h-full  flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         {/* <div className='sm:mx-auto sm:w-full sm:max-w-sm'>
           <h2 className='mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900'>
             Sign in to your account
           </h2>
         </div> */}
-        <h1 className='mt-10 text-center text-xl font-bold leading-9 tracking-tight text-gray-900'>
+        <h1 className="mt-10 text-center text-xl font-bold leading-9 tracking-tight text-gray-900">
           {`Mobile device date: ${data?.date}`}
         </h1>
-        <h1 className='mt-10 text-center text-xl font-bold leading-9 tracking-tight text-gray-900'>
+        <h1 className="mt-10 text-center text-xl font-bold leading-9 tracking-tight text-gray-900">
           {`Mobile device Geroscope: ${geros}`}
         </h1>
-        <h1 className='mt-10 text-center text-xl font-bold leading-9 tracking-tight text-gray-900'>
+        <h1 className="mt-10 text-center text-xl font-bold leading-9 tracking-tight text-gray-900">
           {`Maps: ${langtitu?.lat} : ${langtitu?.lng}`}
         </h1>
-        <h1 className='mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900 flex'>
+        <h1 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900 flex">
           Mobile system language :
           {data?.language && (
             // <img
@@ -149,11 +149,11 @@ export default function Main() {
             //   }.svg`}
             //   width='50'
             // />
-            <img src={`https://flagcdn.com/gb.svg`} width='50' />
+            <img src={`https://flagcdn.com/gb.svg`} width="50" />
           )}
         </h1>
 
-        <div className='mt-10 sm:mx-auto sm:w-full sm:max-w-sm'>
+        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           {/* <form className='space-y-6' action='#' method='POST'> */}
           {/* <div>
               <label
@@ -216,8 +216,8 @@ export default function Main() {
                 handleClick();
                 sendDataToAndroid();
               }}
-              id='webButton'
-              className=' mt-2 flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+              id="webButton"
+              className=" mt-2 flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
               Get Time
             </button>
@@ -228,7 +228,7 @@ export default function Main() {
                 handleClick3();
               }}
               // id='webButton'
-              className=' mt-2 flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+              className=" mt-2 flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
               Get Location
             </button>
@@ -238,8 +238,8 @@ export default function Main() {
               onClick={() => {
                 handleClick2(), sendDataToAndroidClose();
               }}
-              id='webButton2'
-              className=' mt-2 flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+              id="webButton2"
+              className=" mt-2 flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
               Close
             </button>
@@ -250,7 +250,7 @@ export default function Main() {
                 deepLink();
               }}
               // id='webButton2'
-              className=' mt-2 flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+              className=" mt-2 flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
               Deep Link
             </button>
@@ -261,18 +261,18 @@ export default function Main() {
                 getLang();
               }}
               // id='webButton2'
-              className=' mt-2 flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+              className=" mt-2 flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
               get Language
             </button>
           </div>
           {/* </form> */}
 
-          <p className='mt-10 text-center text-sm text-gray-500'>
-            Not a member?{' '}
+          <p className="mt-10 text-center text-sm text-gray-500">
+            Not a member?{" "}
             <a
-              href='#'
-              className='font-semibold leading-6 text-indigo-600 hover:text-indigo-500'
+              href="#"
+              className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
             >
               Start a 14 day free trial
             </a>
@@ -283,3 +283,6 @@ export default function Main() {
     </div>
   );
 }
+
+
+// vbgcgvcgcbhc
