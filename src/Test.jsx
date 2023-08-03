@@ -335,7 +335,6 @@ export default function Main() {
           </p>
         </div>
         {/* <video ref={videoRef} autoPlay></video> */}
-        <button><a href="https://t.me/webdev7788">GET ON WITH SHAXZOD</a></button>
       </div>
     </div>
   );
