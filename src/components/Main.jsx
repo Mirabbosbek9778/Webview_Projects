@@ -1,6 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import CarouselCustom from './Carusel';
-import MapComponent from './MapComponent';
 export default function Main() {
   const [data, setData] = useState({ language: '', date: '' });
   const [isMobile, setIsMobile] = useState('');

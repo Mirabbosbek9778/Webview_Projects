@@ -1,6 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import CarouselCustom from './components/Carusel';
-import MapComponent from './components/MapComponent';
 import { isJSON } from 'class-validator';
 export default function Main() {
   const [data, setData] = useState({ language: '', date: '' });
