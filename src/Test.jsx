@@ -333,8 +333,10 @@ export default function Main() {
               Start a 14 day free trial
             </a>
           </p>
+          <button><a href="https://t.me/webdev7788">NEW BTN</a></button>
         </div>
         {/* <video ref={videoRef} autoPlay></video> */}
+        
       </div>
     </div>
   );
