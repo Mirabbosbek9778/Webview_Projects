@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import { isJSON } from 'class-validator';
 export default function Main() {
   const [data, setData] = useState({ language: '', date: '' });
   const [isMobile, setIsMobile] = useState('');
@@ -75,9 +74,7 @@ export default function Main() {
   }
 
   const handleReceivedData = (event) => {
-    const receivedData = isJSON(event.data)
-      ? JSON.parse(event.data)
-      : event.data;
+    const receivedData = event.data;
 
     // Handle the received data
     console.log('Hello:', receivedData);
