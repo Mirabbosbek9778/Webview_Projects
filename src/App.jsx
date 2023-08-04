@@ -1,16 +1,13 @@
-// import { useState } from "react";
-// import Main from './components/Main';
-import Test from "./Test";
-import "./App.css";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { Dashboard, Auth } from "@/layouts";
 
 function App() {
-  // const [count, setCount] = useState(0);
-
   return (
-    <>
-      {/* <Main />*/}
-      <Test />
-    </>
+    <Routes>
+      <Route path="/dashboard/*" element={<Dashboard />} />
+      <Route path="/auth/*" element={<Auth />} />
+      <Route path="*" element={<Navigate to="/dashboard/home" replace />} />
+    </Routes>
   );
 }
 

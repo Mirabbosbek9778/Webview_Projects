@@ -9,4 +9,7 @@ export default defineConfig({
     hot: true,
   },
   plugins: [react(), tailwindcss()],
+  resolve: {
+    alias: [{ find: "@", replacement: "/src" }],
+  },
 });
